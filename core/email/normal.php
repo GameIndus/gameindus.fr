@@ -1,4 +1,12 @@
 <?php
+#
+# GameIndus - A free online platform to imagine, create and publish your game with ease!
+#
+# GameIndus website
+# Copyright (c) 2015-2018 Maxime Malgorn (Utarwyn)
+# <https://github.com/GameIndus/gameindus.fr>
+#
+
 if (!defined("WEBBASE")) define('WEBBASE', 'http://gameindus.fr/');
 ?><!DOCTYPE html PUBLIC "-//WC//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
