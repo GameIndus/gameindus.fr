@@ -1,0 +1,16 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.*) /index.php?p=$1 [L,QSA]
+
+RewriteCond %{HTTP_USER_AGENT} libwww-perl.* 
+RewriteRule .* ? [F,L]
+
+<IfModule mod_headers.c>
+	# Set XSS Protection header
+	Header set X-XSS-Protection "1; mode=block"
+	Header set Cache-Control "max-age=0, public"
+	Header unset ETag
+	FileETag none
+</IfModule>
