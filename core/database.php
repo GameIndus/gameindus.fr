@@ -10,21 +10,34 @@
 class Database
 {
 
+    /**
+     * @var array Credential object for the connection
+     */
     public $db = array();
+
+    /**
+     * @var PDO MySQL connection object
+     */
     public $pdo;
 
+    /**
+     * @var string Last request sended to the database
+     */
     public $lastRequest;
 
-    public function connect($host, $pseudobdd, $passbdd, $namebdd)
+    public function __construct($host, $pseudobdd, $passbdd, $namebdd)
     {
+        // Initialize credential object for the MySQL connection
         $this->db = array(
             'host' => $host,
             'user' => $pseudobdd,
             'pass' => $passbdd,
             'database' => $namebdd
         );
-        if ($this->pdo != null) return false;
+    }
 
+    public function connect()
+    {
         try {
             $this->pdo = new PDO('mysql:host=' . $this->db['host'] . ';dbname=' . $this->db['database'], $this->db['user'], $this->db['pass'], array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
@@ -36,6 +49,10 @@ class Database
 
     public function find($req = null)
     {
+        if (is_null($this->pdo)) {
+            $this->connect();
+        }
+
         $sql = 'SELECT ';
 
         if (!empty($req['fields'])) {
@@ -123,6 +140,10 @@ class Database
 
     public function save($req = null)
     {
+        if (is_null($this->pdo)) {
+            $this->connect();
+        }
+
         if (!isset($req['where'])) {
             $sql = "INSERT INTO `{$req['table']}` (";
             $total = count($req['fields']);
@@ -190,6 +211,10 @@ class Database
 
     public function delete($req = null)
     {
+        if (is_null($this->pdo)) {
+            $this->connect();
+        }
+
         $sql = "DELETE FROM {$req['table']} WHERE {$req['where']} = '{$req['wherevalue']}'";
         $this->lastRequest = $sql;
 
@@ -210,6 +235,10 @@ class Database
 
     public function req($sql)
     {
+        if (is_null($this->pdo)) {
+            $this->connect();
+        }
+
         $req = $this->pdo->prepare($sql);
         $this->lastRequest = $sql;
 
@@ -224,7 +253,11 @@ class Database
 
     public function getLastID()
     {
-        return $this->pdo->lastInsertId();
+        if (!is_null($this->pdo)) {
+            return $this->pdo->lastInsertId();
+        } else {
+            return -1;
+        }
     }
 
 }

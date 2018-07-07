@@ -173,8 +173,7 @@ class Router
         if (count($split) > 1) $action = ucfirst($split[1]);
 
         // Connect to the database before running the controller
-        $DB = new Database();
-        $DB->connect(
+        $DB = new Database(
             $this->config->database->host,
             $this->config->database->user,
             $this->config->database->password,

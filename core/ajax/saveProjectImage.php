@@ -26,8 +26,7 @@ if (!getUser()) {
 
 $currentProjectId = $_SESSION['user']->currentProjectId;
 
-$DB = new Database();
-$DB->connect($config->database->host, $config->database->user, $config->database->password, $config->database->database);
+$DB = new Database($config->database->host, $config->database->user, $config->database->password, $config->database->database);
 
 $currentProject = $DB->findFirst(array(
     'table' => 'projects',
