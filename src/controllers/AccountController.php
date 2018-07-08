@@ -123,11 +123,9 @@ class AccountController extends Controller
         $sql = "SELECT * FROM users_completedbadges
 				INNER JOIN users_badges ON users_completedbadges.badge_id = users_badges.id 
 				WHERE users_completedbadges.user_id = :user_id";
-        $pre = $this->DB->pdo->prepare($sql);
-        $pre->execute(array('user_id' => $user->id));
 
         $badges = $this->DB->find(array('table' => 'users_badges'));
-        $completedbadges = $pre->fetchAll(PDO::FETCH_OBJ);
+        $completedbadges = $this->DB->req($sql, array('user_id' => $user->id));
 
         foreach ($completedbadges as $v) {
             foreach ($badges as $v2) {

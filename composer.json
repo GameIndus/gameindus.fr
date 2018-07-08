@@ -1,0 +1,15 @@
+{
+    "name": "gameindus/gameindus.fr",
+    "description": "The GameIndus website!",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maxime Malgorn (Utarwyn)",
+            "email": "contact@utarwyn.fr"
+        }
+    ],
+    "require": {
+        "setasign/fpdf": "^1.8"
+    }
+}

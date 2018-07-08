@@ -7,7 +7,7 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
-require("core/Paypal.php");
+require_once SRC . DS . "core/Paypal.php";
 
 class PremiumController extends Controller
 {
@@ -212,8 +212,7 @@ class PremiumController extends Controller
             exit();
         }
 
-        require("core/libs/fpdf/fpdf.php");
-        require("core/libs/pdf.php");
+        require SRC . DS . 'core' . DS . 'libs' . DS . 'pdf.php';
 
         $pdf = new PDF();
         $pdf->SetAuthor("GameIndus");
@@ -260,7 +259,7 @@ class PremiumController extends Controller
         $pdf->Rect(0, 0, 2000, 35, "F");
         $pdf->SetFillColor(221, 221, 221);
         $pdf->Rect(0, 34, 2000, 2, "F");
-        $pdf->Image('https://gameindus.fr/imgs/logo/logo-medium.png', 10, 6, 100);
+        $pdf->Image(ROOT . DS . 'imgs/header-logo.jpg', 10, 6, 100);
         $pdf->SetFont('Arial', '', 12);
         $pdf->Text(178, 16, 'gameindus.fr');
         $pdf->Text(160, 22, 'contact@gameindus.fr');

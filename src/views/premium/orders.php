@@ -1,6 +1,6 @@
 <div class="account-container orders-container">
     <div class="user-menu-container">
-        <?php include "views/account/user-menu.php"; ?>
+        <?php include SRC . "/views/account/user-menu.php"; ?>
     </div>
 
     <h1 class="title" style="padding-top:20px">Abonnement Premium</h1>

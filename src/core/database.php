@@ -233,7 +233,7 @@ class Database
         return ((empty($sql) ? -1 : $sql{0}->c));
     }
 
-    public function req($sql)
+    public function req($sql, $input_parameters = null)
     {
         if (is_null($this->pdo)) {
             $this->connect();
@@ -242,7 +242,7 @@ class Database
         $req = $this->pdo->prepare($sql);
         $this->lastRequest = $sql;
 
-        $req->execute();
+        $req->execute($input_parameters);
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 

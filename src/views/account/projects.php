@@ -1,6 +1,6 @@
 <div class="account-container">
     <div class="user-menu-container">
-        <?php include "views/account/user-menu.php"; ?>
+        <?php include "user-menu.php"; ?>
     </div>
 
     <div class="user-account-container row-container">

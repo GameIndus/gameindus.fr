@@ -27,6 +27,7 @@ if ($config->development) {
 date_default_timezone_set('Europe/Paris');
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 
+require dirname(ROOT) . DS . 'vendor' . DS . 'autoload.php';
 
 require SRC . '/core/libs/mobileDetect.php';
 require SRC . '/core/helpers/Html.php';
