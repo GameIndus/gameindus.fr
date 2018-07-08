@@ -7,7 +7,10 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
-require_once SRC . DS . "core/Paypal.php";
+namespace GameIndus\Controller;
+
+use GameIndus\Core\Controller;
+use GameIndus\Core\Paypal;
 
 class PremiumController extends Controller
 {

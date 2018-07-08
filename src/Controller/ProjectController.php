@@ -7,6 +7,11 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Controller;
+
+use GameIndus\Core\Controller;
+use GameIndus\Lib\ImageManipulator;
+
 class ProjectController extends Controller
 {
 
@@ -592,7 +597,7 @@ class ProjectController extends Controller
             }
         }
 
-        require SRC . DS . 'lib/ImageManipulator.php';
+        require SRC . DS . 'Lib/ImageManipulator.php';
 
         $im = new ImageManipulator($file);
         // $centreX = round($im->getWidth() / 2);

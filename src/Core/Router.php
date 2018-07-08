@@ -7,6 +7,10 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Core;
+
+use Mobile_Detect;
+
 class Router
 {
 
@@ -181,8 +185,10 @@ class Router
         );
 
         $ctrlName = $ctrlName . 'Controller';
-        require(SRC . '/controllers/' . $ctrlName . '.php');
-        $ctrl = new $ctrlName($this->config, $DB);
+        $ctrlPath = 'GameIndus\\Controller\\' . $ctrlName;
+
+        require(SRC . '/Controller/' . $ctrlName . '.php');
+        $ctrl = new $ctrlPath($this->config, $DB);
 
         $ctrl->setTitle($this->config->template->title);
         $ctrl->setDescription($this->config->template->description);

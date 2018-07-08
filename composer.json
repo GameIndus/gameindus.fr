@@ -9,7 +9,11 @@
             "email": "contact@utarwyn.fr"
         }
     ],
+    "autoload": {
+        "psr-4": { "GameIndus\\" : "src" }
+    },
     "require": {
+        "php": ">=5.3",
         "setasign/fpdf": "^1.8",
         "james-heinrich/getid3": "^1.9",
         "michelf/php-markdown": "^1.8",

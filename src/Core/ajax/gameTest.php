@@ -10,9 +10,9 @@
 ini_set('session.cookie_domain', '.gameindus.fr');
 session_start();
 
-require '../../core/config.php';
-require '../../core/functions.php';
-require '../../core/database.php';
+require '../../Core/config.php';
+require '../../Core/functions.php';
+require '../../Core/database.php';
 
 // Init request
 $pId = $_SESSION["last_game_id"];

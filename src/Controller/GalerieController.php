@@ -7,6 +7,11 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Controller;
+
+use GameIndus\Core\Controller;
+use stdClass;
+
 class GalerieController extends Controller
 {
 

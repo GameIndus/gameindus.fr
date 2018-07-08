@@ -7,6 +7,11 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Core;
+
+use PDO;
+use PDOException;
+
 class Database
 {
 

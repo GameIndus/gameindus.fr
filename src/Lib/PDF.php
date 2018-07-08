@@ -7,6 +7,10 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Lib;
+
+use FPDF;
+
 class PDF extends FPDF
 {
 

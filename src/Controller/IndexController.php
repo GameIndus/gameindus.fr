@@ -7,6 +7,10 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Controller;
+
+use GameIndus\Core\Controller;
+
 class IndexController extends Controller
 {
 
@@ -25,12 +29,10 @@ class IndexController extends Controller
             $post->summary = cutText($post->content, 100);
         }
 
-
-        $d = new StdClass();
-        $d->projs = $lastProjs;
-        $d->posts = $lastPosts;
-
-        $this->set($d);
+        $this->set(array(
+            "projs" => $lastProjs,
+            "posts" => $lastPosts
+        ));
     }
 
 }

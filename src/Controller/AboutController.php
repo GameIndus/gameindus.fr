@@ -7,6 +7,10 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Controller;
+
+use GameIndus\Core\Controller;
+
 class AboutController extends Controller
 {
 
@@ -23,12 +27,10 @@ class AboutController extends Controller
     public function helpus()
     {
         $this->setTitle('Nous aider');
-
-        $d = new StdClass();
-        $d->donations = 2;
-        $d->donateState = 3;
-
-        $this->set($d);
+        $this->set(array(
+            "donations" => 2,
+            "donateState" => 3
+        ));
     }
 
     public function team()

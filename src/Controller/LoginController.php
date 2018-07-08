@@ -7,6 +7,10 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Controller;
+
+use GameIndus\Core\Controller;
+
 class LoginController extends Controller
 {
 

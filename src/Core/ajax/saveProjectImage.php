@@ -16,8 +16,8 @@ session_start();
 
 $config = json_decode(file_get_contents('../../config.json'));
 
-require '../../core/functions.php';
-require '../../core/database.php';
+require '../../Core/functions.php';
+require '../../Core/database.php';
 
 if (!getUser()) {
     echo(json_encode(((object)array('error' => 'Vous devez être connecté.'))));

@@ -7,6 +7,8 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+use GameIndus\Core\Router;
+
 session_start();
 
 define('DS', DIRECTORY_SEPARATOR);
@@ -28,12 +30,7 @@ date_default_timezone_set('Europe/Paris');
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 
 require dirname(ROOT) . DS . 'vendor' . DS . 'autoload.php';
-
-require SRC . '/core/database.php';
-require SRC . '/core/functions.php';
-require SRC . '/core/Controller.php';
-require SRC . '/core/Router.php';
-
+require SRC . DS . 'core' . DS . 'functions.php';
 
 $router = new Router($config);
 

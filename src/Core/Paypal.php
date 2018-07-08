@@ -7,6 +7,8 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Core;
+
 class Paypal
 {
 
@@ -72,5 +74,3 @@ class Paypal
     }
 
 }
-
-?>

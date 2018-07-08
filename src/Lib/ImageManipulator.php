@@ -7,6 +7,13 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Lib;
+
+use Exception;
+use InvalidArgumentException;
+use RuntimeException;
+use UnexpectedValueException;
+
 class ImageManipulator
 {
     /**
@@ -220,6 +227,7 @@ class ImageManipulator
      * Save current image to file
      *
      * @param string $fileName
+     * @param integer Type of the image to save
      * @return void
      * @throws RuntimeException
      */

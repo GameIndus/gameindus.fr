@@ -9,9 +9,9 @@
 
 session_start();
 
-require '../../core/config.php';
-require '../../core/database.php';
-require '../../core/functions.php';
+require '../../Core/config.php';
+require '../../Core/database.php';
+require '../../Core/functions.php';
 $DB = new Database();
 $DB->connect(BDD_HOST, BDD_USER, BDD_PASS, BDD_DB);
 

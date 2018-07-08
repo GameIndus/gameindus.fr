@@ -11,8 +11,8 @@ session_start();
 $currentProjectEditorId = $_SESSION['user']->currentProject;
 $maxSize = 2000000;
 
-require '../../core/config.php';
-require '../../core/database.php';
+require '../../Core/config.php';
+require '../../Core/database.php';
 $DB = new Database();
 $DB->connect(BDD_HOST, BDD_USER, BDD_PASS, BDD_DB);
 

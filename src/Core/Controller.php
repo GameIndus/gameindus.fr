@@ -7,6 +7,8 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Core;
+
 class Controller
 {
 
@@ -16,7 +18,7 @@ class Controller
     public $config = null;
 
     /**
-     * @var PDO Objet d'accès à la base de données
+     * @var \PDO Objet d'accès à la base de données
      */
     public $DB = null;
 
@@ -52,6 +54,10 @@ class Controller
 
     protected function set($d)
     {
+        if (!is_object($d)) {
+            $d = (object) $d;
+        }
+
         $this->d = $d;
     }
 

@@ -7,6 +7,12 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Controller;
+
+use GameIndus\Core\Controller;
+use PDO;
+use stdClass;
+
 class MarketController extends Controller
 {
 

@@ -9,8 +9,8 @@
 
 session_start();
 
-require '../../core/config.php';
-require '../../core/functions.php';
+require '../../Core/config.php';
+require '../../Core/functions.php';
 
 $maxSize = 5;
 

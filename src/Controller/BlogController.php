@@ -7,6 +7,10 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Controller;
+
+use GameIndus\Core\Controller;
+
 class BlogController extends Controller
 {
 
@@ -15,12 +19,11 @@ class BlogController extends Controller
         $lastPosts = $this->DB->find(array("table" => "blog", "limit" => "0,10", "order" => "date desc"));
         $popuPosts = $this->DB->find(array("table" => "blog", "fields" => array("id", "title", "views"), "limit" => "0,5", "order" => "views desc"));
 
-        $d = new StdClass();
-        $d->posts = $lastPosts;
-        $d->popuPosts = $popuPosts;
-
         $this->setTitle('Le blog');
-        $this->set($d);
+        $this->set(array(
+            "posts" => $lastPosts,
+            "popuPosts" => $popuPosts
+        ));
     }
 
     public function view($req)

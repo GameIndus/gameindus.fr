@@ -7,6 +7,10 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
+namespace GameIndus\Controller;
+
+use GameIndus\Core\Controller;
+
 class AccountController extends Controller
 {
 
@@ -33,9 +37,8 @@ class AccountController extends Controller
 				INNER JOIN projects ON users_projectsliked.project_id = projects.id 
 				INNER JOIN users ON projects.owner_id = users.id
 				WHERE users_projectsliked.user_id = :user_id ORDER BY date_liked DESC LIMIT 0,3";
-        $pre = $this->DB->pdo->prepare($sql);
-        $pre->execute(array('user_id' => $user->id));
-        $user->projectsFollowed = $pre->fetchAll(PDO::FETCH_OBJ);
+
+        $user->projectsFollowed = $this->DB->req($sql, array('user_id' => $user->id));
         $user->todayWheelTrial = $this->DB->findFirst(array("table" => "users_wheeltrials", "fields" => array('win', 'date'), "conditions" => array("user_id" => $user->id, "date" => date("Y-m-d", time()))));
 
         if ($user->friend_key_activated) {
