@@ -53,7 +53,7 @@ class Router
             define('LANG_BASE', BASE);
         }
 
-        require 'core/lang/' . $this->lang . '.php';
+        require SRC . '/core/lang/' . $this->lang . '.php';
         if (isset($strings)) $GLOBALS["strings"] = $strings;
 
         if ($this->page == 'home' || $this->page == '') $this->page = 'index';
@@ -160,7 +160,7 @@ class Router
         global $DB;
 
         // Call the controller
-        $fileExist = (file_exists(ROOT . DS . 'views' . DS . $this->page . '.php')) ? true : false;
+        $fileExist = (file_exists(SRC . DS . 'views' . DS . $this->page . '.php')) ? true : false;
         $ctrlName = "Index";
         $action = "index";
 
@@ -181,7 +181,7 @@ class Router
         );
 
         $ctrlName = $ctrlName . 'Controller';
-        require('controllers/' . $ctrlName . '.php');
+        require(SRC . '/controllers/' . $ctrlName . '.php');
         $ctrl = new $ctrlName($this->config, $DB);
 
         $ctrl->setTitle($this->config->template->title);
@@ -223,9 +223,9 @@ class Router
         }*/
 
         ob_start();
-        require './views/' . $this->page . '.php';
+        require SRC . '/views/' . $this->page . '.php';
         $content_for_layout = ob_get_clean();
-        require 'views/templates/' . $this->template . '.php';
+        require SRC . '/views/templates/' . $this->template . '.php';
     }
 
 

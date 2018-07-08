@@ -67,7 +67,7 @@ class BlogController extends Controller
         $post->otherPosts = $otherPosts;
 
         // Parse the post content from markdown to HTML
-        require_once 'core/libs/markdown/Markdown.inc.php';
+        require_once SRC . '/core/libs/markdown/Markdown.inc.php';
         $post->content = Michelf\Markdown::defaultTransform($post->content);
 
         $this->setTitle('Blog : ' . $post->title);

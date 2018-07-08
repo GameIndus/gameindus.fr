@@ -592,7 +592,7 @@ class ProjectController extends Controller
             }
         }
 
-        require "core/libs/image.php";
+        require SRC . DS . 'core/libs/image.php';
 
         $im = new ImageManipulator($file);
         // $centreX = round($im->getWidth() / 2);

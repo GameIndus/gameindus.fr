@@ -7,31 +7,33 @@
 # <https://github.com/GameIndus/gameindus.fr>
 #
 
-ini_set('session.cookie_domain', '.gameindus.fr');
 session_start();
 
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(__FILE__));
+define('SRC', dirname(ROOT) . DS . 'src');
 define('BASE', dirname($_SERVER["SCRIPT_NAME"]) . '/');
 
-$config = json_decode(file_get_contents('config.json'));
+$config = json_decode(file_get_contents('../config.json'));
 
 if ($config->development) {
     error_reporting(E_ALL);
     ini_set("display_errors", 1);
     ini_set('memory_limit', '-1');
+} else {
+    ini_set('session.cookie_domain', '.gameindus.fr');
 }
 
 date_default_timezone_set('Europe/Paris');
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 
 
-require 'core/libs/mobileDetect.php';
-require 'core/helpers/Html.php';
-require 'core/database.php';
-require 'core/functions.php';
-require 'core/Controller.php';
-require 'core/Router.php';
+require SRC . '/core/libs/mobileDetect.php';
+require SRC . '/core/helpers/Html.php';
+require SRC . '/core/database.php';
+require SRC . '/core/functions.php';
+require SRC . '/core/Controller.php';
+require SRC . '/core/Router.php';
 
 
 $router = new Router($config);
