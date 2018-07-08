@@ -10,6 +10,9 @@
         }
     ],
     "require": {
-        "setasign/fpdf": "^1.8"
+        "setasign/fpdf": "^1.8",
+        "james-heinrich/getid3": "^1.9",
+        "michelf/php-markdown": "^1.8",
+        "mobiledetect/mobiledetectlib": "^2.8"
     }
 }

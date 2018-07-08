@@ -29,8 +29,6 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 
 require dirname(ROOT) . DS . 'vendor' . DS . 'autoload.php';
 
-require SRC . '/core/libs/mobileDetect.php';
-require SRC . '/core/helpers/Html.php';
 require SRC . '/core/database.php';
 require SRC . '/core/functions.php';
 require SRC . '/core/Controller.php';

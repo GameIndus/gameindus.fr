@@ -16,8 +16,9 @@ ini_set('memory_limit', '-1');
 if (!isset($_GET["file"]) || empty($_GET["file"])) die("error");
 $filename = "/home/gameindus/system/assets/{$_GET["file"]}";
 
-require "/home/gameindus/site/core/libs/getid3/getid3.php";
-$getID3 = new getID3();
+// TODO: rewrite all this dirty code! :(
+// require "/home/gameindus/site/core/libs/getid3/getid3.php";
+// $getID3 = new getID3();
 
 $id3_info = $getID3->analyze($filename);
 
