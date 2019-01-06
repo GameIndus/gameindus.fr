@@ -1,10 +1,10 @@
 .idea/
 *.iml
 
-*config.*
-imgs/avatars/
-imgs/cropped/
-imgs/projects/
-imgs/helpcenter/
+config.json
+/public/imgs/avatars/
+/public/imgs/cropped/
+/public/imgs/projects/
+/public/imgs/helpcenter/
 
 /vendor/

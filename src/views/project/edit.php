@@ -1,6 +1,6 @@
 <div class="project-container">
     <div class="project-menu-container">
-        <?php include "views/project/project-menu.php"; ?>
+        <?php include SRC . "/views/project/project-menu.php"; ?>
     </div>
 
     <div class="project-content-container row-container">

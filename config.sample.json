@@ -1,0 +1,22 @@
+{
+	"database": {
+		"host": "localhost",
+		"user": "root",
+		"password": "root",
+		"database": "gameindus"
+	},
+	"template": {
+		"name": "v2",
+		"title": "Default title of the website",
+		"description": "Default description of the website",
+		"lang": "en",
+		"other_langs": []
+	},
+	"auth": {
+		"key": "myawesomekey",
+		"passphrase": "myawesomepassphrase"
+	},
+	"version": "X",
+	"development": false,
+	"admin_prefix": "admin"
+}

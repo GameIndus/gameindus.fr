@@ -26,11 +26,6 @@ class AccountController extends Controller
         }
 
         $user = clone getUser();
-
-        // if(isAdmin($user)){
-        // 	setNotif("Test de notification.", "danger");
-        // }
-
         $user->projects = $this->DB->find(array("table" => "projects", "conditions" => array("owner_id" => $user->id)));
 
         $sql = "SELECT *, projects.name AS projectname, projects.id AS projectid FROM users_projectsliked

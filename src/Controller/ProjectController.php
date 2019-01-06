@@ -69,11 +69,14 @@ class ProjectController extends Controller
 
         foreach (preg_split('/,/', $project->users_id) as $v) {
             $user = $this->DB->findFirst(array('table' => 'users', 'conditions' => array('id' => $v)));
-            $users[] = $user;
+
+            if ($user) {
+                $users[] = $user;
+            }
         }
 
-        if (strpos($project->users_id, ',') === false)
-            $users = (Object)array('0' => $this->DB->findFirst(array('table' => 'users', 'conditions' => array('id' => $project->users_id))));
+        /*if (strpos($project->users_id, ',') === false)
+            $users = (Object)array('0' => $this->DB->findFirst(array('table' => 'users', 'conditions' => array('id' => $project->users_id))));*/
 
         $project->users = $users;
         $project->gameType = $this->projectTypes[$project->type];
@@ -211,6 +214,7 @@ class ProjectController extends Controller
 
         function cryptWithKey($data, $key256, $passphrase)
         {
+            // TODO This method seems to be depreacated since PHP 7.1.0 ...
             $cipher = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
             $iv = $passphrase;
 
@@ -225,7 +229,7 @@ class ProjectController extends Controller
 
         $_SESSION['project'] = $project;
         $_SESSION["user"]->auth = (object)array(
-            "token" => cryptWithKey($token, Config::$authKey, Config::$authPassphrase),
+            "token" => cryptWithKey($token, $this->config->auth->key, $this->config->auth->passphrase),
             "projectId" => $projectId
         );
 

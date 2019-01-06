@@ -2,13 +2,15 @@
     <div class="row-container">
         <div class="left">
             <div class="title"><?= $d->name ?></div>
-            <div class="authors">
+            <?php if (!empty($d->users)): ?>
+                <div class="authors">
                 par
                 <?php $i = 0;
                 foreach ($d->users as $v): ?>
                     <?= '<img class="user-avatar" src="' . BASE . trim($v->avatar, '/') . '" alt="Avatar de ' . $v->username . '">' . (($i + 1 < count((array)$d->users)) ? $v->username . "," : $v->username) ?>
                     <?php $i++; endforeach ?>
-            </div>
+                </div>
+            <?php endif ?>
         </div>
         <div class="right">
             <div class="meta"<?= ((getUser()) ? ' style="margin-top:5px"' : "") ?>>Jeu <?= $d->engine; ?>
