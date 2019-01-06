@@ -1,6 +1,6 @@
 <div class="project-container">
     <div class="project-menu-container">
-        <?php include "views/project/project-menu.php"; ?>
+        <?php include SRC . "/views/project/project-menu.php"; ?>
     </div>
 
     <div class="project-content-container row-container">
@@ -45,51 +45,6 @@
                         class="fa fa-heart"></i>&nbsp;&nbsp;<?= $d->project->likes ?></p>
             <br>
         </div>
-
-        <!-- <div style="margin:20px 0">
-			<div class="form-container">
-				<p style="font-size:1.2em">Membres du projet</p>
-				
-				<br>
-
-				<table class="flatTable members-table" style="min-width:450px;margin: 5px 0">
-				  	<tr class="title-line" style="height:40px;font-size:1.4em">
-					    <td class="titleTd"><?= count($d->users); ?> membre<?= ((count($d->users) > 1) ? "s" : "") ?></td>
-					    <td colspan="3"></td>
-					</tr>
-				  	<tr class="heading-line">
-					    <td width="220">Nom</td>
-					    <td>Grade</td>
-					    <td>Actions</td>
-					</tr>
-
-					<?php
-        foreach ($d->users as $v):
-
-            $role = (in_array($v->id, $d->adminusers)) ? 'Administrateur' : 'Membre';
-            if ($d->project->owner_id == $v->id) $role = "Chef de projet";
-            ?>
-					  	<tr>
-						    <td>
-						    	<div class="avatar" style="display:inline-block;float:left;top:5px;position:relative">
-					    			<img style="width:32px;height:32px;border-radius:50%" src="<?= $v->avatar ?>" alt="Avatar de <?= $v->username ?>">
-						    	</div> 
-						    	<span style="display:block;position:relative;top:10px;float:left;padding-left:15px"><?= $v->username ?></span>
-						    </td>
-						    <td><?= $role ?></td>
-						    <td>
-						    	<a href="/account/<?= $v->id; ?>" title="Voir le profil"><i class="fa fa-eye"></i></a>
-				    			<?php if (canPerformAction($user, $admin, $owner, $role, $v->id)): ?><a href="<?php echo BASE ?>project/<?php echo $d->project->id ?>/changeusergrade?q=<?php echo $v->id; ?>" title="Changer de grade"><i class="fa fa-graduation-cap"></i></a><?php endif; ?>
-				    			<?php if ($owner && $role != 'Chef de projet' && $v->id != getUser()->id): ?><a href="<?php echo BASE ?>project/<?php echo $d->project->id ?>/defineprojowner?q=<?php echo $v->id; ?>" title="Définir chef de projet" onclick="return confirm('Voulez-vous vraiment passer votre grade à ce membre ?');" ><i class="fa fa-trophy"></i></a><?php endif; ?>
-				    			<?php if (canPerformAction($user, $admin, $owner, $role, $v->id)): ?><a href="<?php echo BASE ?>project/<?php echo $d->project->id ?>/excludeuser?q=<?php echo $v->id; ?>" onclick="return confirm('Voulez-vous vraiment exclure ce membre du projet ?');" title="Exclure du projet"><i class="fa fa-sign-out"></i></a><?php endif; ?>
-						    </td>
-						</tr>
-					<?php endforeach ?>
-				</table>
-
-			</div>
-		</div> -->
-
 
         <div class="clear"></div>
     </div>

@@ -42,7 +42,15 @@ class Router
     public function format()
     {
         $suffix = "";
-        $this->page = explode('?', trim(str_replace(dirname($_SERVER['SCRIPT_NAME']), '', $_SERVER['REQUEST_URI']), '/'))[0];
+	$base = dirname($_SERVER['SCRIPT_NAME']);
+
+        $this->page = explode('?', $_SERVER['REQUEST_URI'])[0];
+
+	if ($base != '/') {
+		$this->page = str_replace($base, '', $this->page);
+	}
+
+	$this->page = trim($this->page, '/');
 
         // Custom langs
         if (in_array(substr($this->page, 0, 3), $this->config->template->other_langs)) {
@@ -51,13 +59,13 @@ class Router
 
             if (strpos($this->page, "/") === 0) $this->page = substr($this->page, 1);
 
-            define('BASE', BASE . $this->lang . DS);
+            define('LANG_BASE', BASE . $this->lang . DS);
             setlocale(LC_TIME, 'en_US.utf8', 'eng');
         } else {
             define('LANG_BASE', BASE);
         }
 
-        require SRC . '/core/lang/' . $this->lang . '.php';
+        require SRC . '/Core/lang/' . $this->lang . '.php';
         if (isset($strings)) $GLOBALS["strings"] = $strings;
 
         if ($this->page == 'home' || $this->page == '') $this->page = 'index';
@@ -172,6 +180,7 @@ class Router
             header("HTTP/1.0 404 Not Found");
             $this->page = "errors/error404";
         }
+
         $split = preg_split("/\//", $this->page);
         if (count($split) > 0) $ctrlName = ucfirst($split[0]);
         if (count($split) > 1) $action = ucfirst($split[1]);

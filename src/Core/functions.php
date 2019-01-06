@@ -55,22 +55,22 @@ function isGet()
 
 function privatePage($cancelActiveCheck = false)
 {
-    if (!isSessionKey("user")) redirect("/connexion");
+    if (!isSessionKey("user")) redirect("connexion");
 
     if (isset($cancelActiveCheck) && !$cancelActiveCheck) {
-        if (!getUser()->active || (!isPremium(getUser()) && getUser()->activated_with_premium && !getUser()->active)) redirect("/account/active");
+        if (!getUser()->active || (!isPremium(getUser()) && getUser()->activated_with_premium && !getUser()->active)) redirect("account/active");
     }
 }
 
 function connectPage()
 {
     if (isSessionKey("user") && isInMaintenance() && isAdmin(getUser())) return false;
-    if (isSessionKey("user")) redirect("/account");
+    if (isSessionKey("user")) redirect("account");
 }
 
 function redirect($url)
 {
-    @header('Location: ' . BASE . $url);
+    @header('Location: ' . BASE . trim($url, '/'));
     die();
 }
 

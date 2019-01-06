@@ -14,7 +14,7 @@ session_start();
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(__FILE__));
 define('SRC', dirname(ROOT) . DS . 'src');
-define('BASE', dirname($_SERVER["SCRIPT_NAME"]) . '/');
+define('BASE', trim(dirname($_SERVER["SCRIPT_NAME"]), "/") . "/");
 
 $config = json_decode(file_get_contents('../config.json'));
 
@@ -30,7 +30,7 @@ date_default_timezone_set('Europe/Paris');
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 
 require dirname(ROOT) . DS . 'vendor' . DS . 'autoload.php';
-require SRC . DS . 'core' . DS . 'functions.php';
+require SRC . DS . 'Core' . DS . 'functions.php';
 
 $router = new Router($config);
 
