@@ -1,60 +1,60 @@
 <?php
-#
-# GameIndus - A free online platform to imagine, create and publish your game with ease!
-#
-# GameIndus website
-# Copyright (c) 2015-2018 Maxime Malgorn (Utarwyn)
-# <https://github.com/GameIndus/gameindus.fr>
-#
 
-use GameIndus\Core\Router;
+/**
+ * Laravel - A PHP Framework For Web Artisans
+ *
+ * @package  Laravel
+ * @author   Taylor Otwell <taylor@laravel.com>
+ */
 
-session_start();
+define('LARAVEL_START', microtime(true));
 
-define('DS', DIRECTORY_SEPARATOR);
-define('ROOT', dirname(__FILE__));
-define('SRC', dirname(ROOT) . DS . 'src');
-define('BASE', dirname($_SERVER["SCRIPT_NAME"]) . '/');
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader for
+| our application. We just need to utilize it! We'll simply require it
+| into the script here so that we don't have to worry about manual
+| loading any of our classes later on. It feels great to relax.
+|
+*/
 
-$config = json_decode(file_get_contents('../config.json'));
+require __DIR__.'/../vendor/autoload.php';
 
-if ($config->development) {
-    error_reporting(E_ALL);
-    ini_set("display_errors", 1);
-    ini_set('memory_limit', '-1');
-} else {
-    ini_set('session.cookie_domain', '.gameindus.fr');
-}
+/*
+|--------------------------------------------------------------------------
+| Turn On The Lights
+|--------------------------------------------------------------------------
+|
+| We need to illuminate PHP development, so let us turn on the lights.
+| This bootstraps the framework and gets it ready for use, then it
+| will load up this application so that we can run it and send
+| the responses back to the browser and delight our users.
+|
+*/
 
-date_default_timezone_set('Europe/Paris');
-setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
-require dirname(ROOT) . DS . 'vendor' . DS . 'autoload.php';
-require SRC . DS . 'core' . DS . 'functions.php';
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can handle the incoming request
+| through the kernel, and send the associated response back to
+| the client's browser allowing them to enjoy the creative
+| and wonderful application we have prepared for them.
+|
+*/
 
-$router = new Router($config);
+$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
-$router->addRoute("account/**", "account");
-$router->addRoute("blog/*", "blog/view");
-$router->addRoute("releases/*", "releases");
-$router->addRoute("project/**", "project[.]");
-$router->addRoute("project/preview/*", "project/preview");
-$router->addRoute("project/download/*", "project/download");
-$router->addRoute("premium/order/**", "premium/order");
-$router->addRoute("presentation", "about/presentation");
-$router->addRoute("galerie/*", "galerie");
+$response = $kernel->handle(
+    $request = Illuminate\Http\Request::capture()
+);
 
-// $router->addRedirection("helpcenter(.*)", "community");
+$response->send();
 
-$router->addRoute("market/search/*", "market/search");
-$router->addRoute("market/subcategory/**", "market/subcategory");
-$router->addRoute("market/category/**", "market/category");
-$router->addRoute("market/asset/*", "market/asset");
-$router->addRoute("market/tag/*", "market/tag");
-$router->addRoute("market/editasset/*", "market/editasset");
-$router->addRoute("market/preview/*", "market/preview");
-
-$router->load();
-
-// @header("Expires: " . gmdate("D, d M Y H:i:s", time()) . " GMT");
-// @header("Last-Modified: " . gmdate('D, d M Y H:i:s', time()) . ' GMT');
+$kernel->terminate($request, $response);

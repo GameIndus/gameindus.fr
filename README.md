@@ -5,7 +5,7 @@
 [![Licence](https://img.shields.io/badge/License-CC%20BY--SA%203.0-green.svg)](https://github.com/GameIndus/gameindus.fr/blob/master/LICENSE.md)
 ![Last commit](https://img.shields.io/github/last-commit/gameindus/gameindus.fr.svg)
 
-Website realized by [@Utarwyn](https://github.com/utarwyn) since 2015 in the project context "GameIndus". You can access the online website [here](https://gameindus.fr). The website includes a homepage, a full-featured blog, a help center and an account system.
+Website realized by [@Utarwyn](https://github.com/utarwyn) since 2015 in the project context "GameIndus". You can access the online website [here](https://gameindus.fr). Now the website is built with [Laravel](https://laravel.com).
 
 ## What is the project GameIndus?
 

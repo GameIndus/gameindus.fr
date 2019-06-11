@@ -1,6 +1,2 @@
 User-agent: *
-Disallow: /controllers/
-Disallow: /core/
-Disallow: /cgi-bin/
-
-Sitemap: https://gameindus.fr/sitemap.xml
+Disallow:
