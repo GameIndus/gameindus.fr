@@ -7,4 +7,8 @@ config.json
 /public/imgs/projects/
 /public/imgs/helpcenter/
 
-/vendor/
+vendor/
+/bootstrap/cache/
+/storage/
+/node_modules/
+.env
