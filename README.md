@@ -26,8 +26,8 @@ Website source code and issue tracker
 </p>
 
 >
-> Website realized by [@Utarwyn](https://github.com/utarwyn) since 2015 in the project context "GameIndus". You can access the online website [here](https://gameindus.fr).
-> The website includes a homepage, a full-featured blog, a help center and an account system.
+> Website realized by [@Utarwyn](https://github.com/utarwyn) since 2015 in the project context "GameIndus".\
+> This branch holds the "under construction" page.
 >
 
 ## What is the project GameIndus?
